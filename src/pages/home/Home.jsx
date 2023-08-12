@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { HomeStyled } from './home.styled';
+import { Service } from 'api/API';
+import useData from 'api/useData';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const { data, getData } = useData();
 
-export default Home
+  useEffect(() => {
+    getData(Service.getTrending);
+  }, [getData]);
+
+  return (
+    <HomeStyled>
+      <MoviesList movies={data} />
+    </HomeStyled>
+  );
+};
+
+export default Home;

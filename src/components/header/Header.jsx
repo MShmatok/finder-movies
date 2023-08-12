@@ -7,8 +7,12 @@ const Header = () => {
   return (
     <HeaderStyled>
       <nav className="navigation">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+        <NavLink className="btn" to="/">
+          Home
+        </NavLink>
+        <NavLink className="btn" to="/movies">
+          Movies
+        </NavLink>
       </nav>
     </HeaderStyled>
   );
