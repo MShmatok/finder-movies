@@ -8,7 +8,7 @@ const Home = () => {
   const { data, getData } = useData();
 
   useEffect(() => {
-    getData(Service.getTrending);
+    getData(Service.getTrending());
   }, [getData]);
 
   return (

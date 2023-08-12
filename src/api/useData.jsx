@@ -6,10 +6,9 @@ const useData = () => {
   const [error, setError] = useState('');
 
   const getData = useCallback(async reqFunction => {
-    console.log(2);
     setLoader(true);
     try {
-      const data = await reqFunction();
+      const data = await reqFunction;
       setData(data);
     } catch (error) {
       setError(error);
