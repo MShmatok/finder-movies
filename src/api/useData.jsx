@@ -7,15 +7,15 @@ const useData = () => {
 
   const getData = useCallback(async reqFunction => {
     console.log(2);
-    // setLoader(true);
-    // try {
-    //   const data = await reqFunction();
-    //   setData(data);
-    // } catch (error) {
-    //   setError(error);
-    // } finally {
-    //   setLoader(false);
-    // }
+    setLoader(true);
+    try {
+      const data = await reqFunction();
+      setData(data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoader(false);
+    }
   }, []);
 
   return { data, loader, error, getData };
