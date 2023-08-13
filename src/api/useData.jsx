@@ -5,10 +5,10 @@ const useData = () => {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
 
-  const getData = useCallback(async reqFunction => {
+  const getData = useCallback(async (reqFunction, signal, param) => {
     setLoader(true);
     try {
-      const data = await reqFunction;
+      const data = await reqFunction(signal, param);
       setData(data);
     } catch (error) {
       setError(error);

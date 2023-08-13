@@ -9,7 +9,11 @@ const Cast = () => {
 
   const { movieId } = useParams();
   useEffect(() => {
-    getData(Service.getCast(movieId));
+    const controller = new AbortController();
+    getData(Service.getCast, controller.signal, movieId);
+    return () => {
+      controller.abort();
+    };
   }, [getData, movieId]);
 
   return (

@@ -8,7 +8,12 @@ const Reviews = () => {
   const { data, getData } = useData();
 
   useEffect(() => {
-    getData(Service.getReviews(movieId));
+    const controller = new AbortController();
+    getData(Service.getReviews, controller.signal, movieId);
+
+    return () => {
+      controller.abort();
+    };
   }, [movieId, getData]);
   return (
     <section>

@@ -12,10 +12,14 @@ const Movies = () => {
   const search = searchParams.get('search');
 
   useEffect(() => {
-    console.log(search);
+    const controller = new AbortController();
     if (search) {
-      getData(Service.getSearch(search));
+      getData(Service.getSearch, controller.signal, search);
     }
+
+    return () => {
+      controller.abort();
+    };
   }, [getData, search]);
 
   const onHandlerSubmit = e => {

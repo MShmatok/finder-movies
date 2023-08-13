@@ -11,7 +11,12 @@ const MoviesDetails = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    getData(Service.getDetails(movieId));
+    const controller = new AbortController();
+    getData(Service.getDetails, controller.signal, movieId);
+
+    return () => {
+      controller.abort();
+    };
   }, [getData, movieId]);
 
   return (

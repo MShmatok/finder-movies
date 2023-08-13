@@ -6,49 +6,53 @@ axios.defaults.params = {
   include_adult: false,
 };
 
-const getTrending = async () => {
+const getTrending = async signal => {
   try {
-    const { data } = await axios.get('/trending/movie/day');
-    console.log(data.results);
+    const { data } = await axios.get('/trending/movie/day', { signal });
+
     return data.results;
   } catch (error) {
     throw new Error('problem with part "/trending/movie/day"');
   }
 };
 
-const getDetails = async movieId => {
+const getDetails = async (signal, movieId) => {
+  console.log(movieId);
   try {
-    const { data } = await axios.get(`/movie/${movieId}`);
-    console.log('getDetails', data);
+    const { data } = await axios.get(`/movie/${movieId}`, { signal });
+
     return data;
   } catch (error) {
     throw new Error('problem with part "Details"');
   }
 };
-const getCast = async movieId => {
+const getCast = async (signal, movieId) => {
+  console.log(movieId);
   try {
-    const { data } = await axios.get(`/movie/${movieId}/credits`);
-    console.log('getCast', data);
+    const { data } = await axios.get(`/movie/${movieId}/credits`, { signal });
+
     return data;
   } catch (error) {
     throw new Error('problem with part "Details"');
   }
 };
 
-const getReviews = async movieId => {
+const getReviews = async (signal, movieId) => {
   try {
-    const { data } = await axios.get(`/movie/${movieId}/reviews`);
-    console.log('getReviews', data.results);
+    const { data } = await axios.get(`/movie/${movieId}/reviews`, { signal });
+
     return data.results;
   } catch (error) {
     throw new Error('problem with part "Details"');
   }
 };
 
-const getSearch = async query => {
+const getSearch = async (signal, query) => {
   try {
-    const { data } = await axios.get(`/search/movie?query=${query}`);
-    console.log('getReviews', data.results);
+    const { data } = await axios.get(`/search/movie?query=${query}`, {
+      signal,
+    });
+
     return data.results;
   } catch (error) {
     throw new Error('problem with part "Details"');
