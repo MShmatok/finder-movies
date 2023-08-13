@@ -26,7 +26,7 @@ const Home = () => {
     return () => {
       controller.abort();
     };
-  }, [getData, loader]);
+  }, [getData]);
   console.log(loader);
   return (
     <HomeStyled>
