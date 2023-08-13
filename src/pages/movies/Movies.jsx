@@ -4,9 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviesList';
 import useData from 'api/useData';
 import { Service } from 'api/API';
+import Loader from 'components/Loader/Loader';
 
 const Movies = () => {
-  const { data, getData } = useData();
+  const { data, error, loader, getData } = useData();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
@@ -29,6 +30,8 @@ const Movies = () => {
 
   return (
     <>
+      {error && <div>error</div>}
+      {loader && <Loader loader={loader} />}
       <form onSubmit={onHandlerSubmit}>
         <input
           type="search"

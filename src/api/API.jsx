@@ -7,17 +7,11 @@ axios.defaults.params = {
 };
 
 const getTrending = async signal => {
-  try {
-    const { data } = await axios.get('/trending/movie/day', { signal });
-
-    return data.results;
-  } catch (error) {
-    throw new Error('problem with part "/trending/movie/day"');
-  }
+  const { data } = await axios.get('/trending/movie/day', { signal });
+  return data.results;
 };
 
 const getDetails = async (signal, movieId) => {
-  console.log(movieId);
   try {
     const { data } = await axios.get(`/movie/${movieId}`, { signal });
 
@@ -27,7 +21,6 @@ const getDetails = async (signal, movieId) => {
   }
 };
 const getCast = async (signal, movieId) => {
-  console.log(movieId);
   try {
     const { data } = await axios.get(`/movie/${movieId}/credits`, { signal });
 

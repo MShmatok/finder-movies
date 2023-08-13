@@ -4,10 +4,11 @@ import useData from 'api/useData';
 
 import { Service } from 'api/API';
 import { SectionStyled } from './MoviesDetails.styled';
+import Loader from 'components/Loader/Loader';
 
 const MoviesDetails = () => {
   const location = useRef(useLocation());
-  const { data, getData } = useData();
+  const { data, loader, error, getData } = useData();
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const MoviesDetails = () => {
 
   return (
     <>
+      {error && <div>error</div>}
+      {loader && <Loader loader={loader} />}
       {data && (
         <>
           <Link to={location.current.state?.from ?? '/'}>Go Back</Link>

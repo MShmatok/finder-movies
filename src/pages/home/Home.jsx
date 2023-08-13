@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { HomeStyled } from './home.styled';
 import { Service } from 'api/API';
 import useData from 'api/useData';
@@ -17,7 +17,7 @@ const Home = () => {
   //     .finally(() => setLoader(false));
   // }, []);
 
-  const { data, loader, getData } = useData();
+  const { data, loader, error, getData } = useData();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -28,8 +28,10 @@ const Home = () => {
     };
   }, [getData]);
   console.log(loader);
+  // console.log(error);
   return (
     <HomeStyled>
+      {error && <div>error</div>}
       {loader && <Loader loader={loader} />}
       {!loader && <MoviesList movies={data} />}
     </HomeStyled>
