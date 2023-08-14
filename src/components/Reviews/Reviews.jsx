@@ -17,7 +17,6 @@ const Reviews = () => {
     };
   }, [movieId, getData]);
 
-  console.log(data);
   return (
     <section>
       {data?.length === 0 && <NoInformation />}
