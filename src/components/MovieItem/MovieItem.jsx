@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 const MovieItem = ({ data: { title, id } }) => {
@@ -13,3 +14,7 @@ const MovieItem = ({ data: { title, id } }) => {
 };
 
 export default MovieItem;
+
+MovieItem.propTypes = {
+  data: PropTypes.object.isRequired,
+};

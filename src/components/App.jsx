@@ -1,10 +1,3 @@
-// import Layouts from 'layouts/Layouts';
-// import Home from 'pages/home/Home';
-// import Movies from 'pages/movies/Movies';
-// import MoviesDetails from 'pages/moviesDetails/MoviesDetails';
-// import Cast from './Cast/Cast';
-// import Reviews from './Reviews/Reviews';
-
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
