@@ -5,6 +5,7 @@ import useData from 'api/useData';
 import { Service } from 'api/API';
 import { SectionStyled } from './MoviesDetails.styled';
 import Loader from 'components/Loader/Loader';
+import { MoviesStyled } from 'pages/movies/Movies.styled';
 
 const MoviesDetails = () => {
   const location = useRef(useLocation());
@@ -21,7 +22,7 @@ const MoviesDetails = () => {
   }, [getData, movieId]);
 
   return (
-    <>
+    <MoviesStyled>
       {error && <div>error</div>}
       {loader && <Loader loader={loader} />}
       {data && (
@@ -60,7 +61,7 @@ const MoviesDetails = () => {
           <Outlet />
         </>
       )}
-    </>
+    </MoviesStyled>
   );
 };
 

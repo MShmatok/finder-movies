@@ -6,6 +6,7 @@ import useData from 'api/useData';
 import { Service } from 'api/API';
 import Loader from 'components/Loader/Loader';
 import InfoNoMovies from 'components/infoNoMovies/InfoNoMovies';
+import { MoviesStyled } from './Movies.styled';
 
 const Movies = () => {
   const { data, error, loader, getData } = useData();
@@ -30,7 +31,7 @@ const Movies = () => {
   };
 
   return (
-    <>
+    <MoviesStyled>
       <form onSubmit={onHandlerSubmit}>
         <input
           type="search"
@@ -47,7 +48,7 @@ const Movies = () => {
       {loader && <Loader />}
       {data?.length > 0 && <MoviesList movies={data} />}
       {data?.length === 0 && search && <InfoNoMovies />}
-    </>
+    </MoviesStyled>
   );
 };
 
