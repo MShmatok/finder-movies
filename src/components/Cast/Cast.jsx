@@ -16,10 +16,10 @@ const Cast = () => {
       controller.abort();
     };
   }, [getData, movieId]);
-  console.log(data);
+
   return (
     <>
-      {data?.cast === 0 && <NoInformation />}
+      {data?.cast.length === 0 && <NoInformation />}
       {data?.cast.length > 0 && (
         <SectionStyled>
           <ul className="list">
