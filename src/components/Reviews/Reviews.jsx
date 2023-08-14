@@ -1,5 +1,6 @@
 import { Service } from 'api/API';
 import useData from 'api/useData';
+import NoInformation from 'components/NoInformation/NoInformation';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -15,11 +16,14 @@ const Reviews = () => {
       controller.abort();
     };
   }, [movieId, getData]);
+
+  console.log(data);
   return (
     <section>
-      <ul>
-        {data &&
-          data.map(review => {
+      {data?.length === 0 && <NoInformation />}
+      {data && (
+        <ul>
+          {data.map(review => {
             return (
               <li key={review.id}>
                 <h2>{`Author: ${review.author}`}</h2>
@@ -27,7 +31,8 @@ const Reviews = () => {
               </li>
             );
           })}
-      </ul>
+        </ul>
+      )}
     </section>
   );
 };

@@ -27,11 +27,11 @@ const Home = () => {
       controller.abort();
     };
   }, [getData]);
-  console.log(loader);
-  // console.log(error);
+
   return (
     <HomeStyled>
-      {error && <div>error</div>}
+      <h1>Trending today</h1>
+      {error && <div>{error}</div>}
       {loader && <Loader loader={loader} />}
       {!loader && <MoviesList movies={data} />}
     </HomeStyled>

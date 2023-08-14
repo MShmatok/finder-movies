@@ -7,6 +7,7 @@ const useData = () => {
 
   const getData = useCallback(async (reqFunction, signal, param) => {
     setLoader(true);
+
     try {
       const data = await reqFunction(signal, param);
       setData(data);

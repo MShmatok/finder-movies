@@ -3,9 +3,10 @@ import useData from 'api/useData';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SectionStyled } from './Cast.styled';
+import NoInformation from 'components/NoInformation/NoInformation';
 
 const Cast = () => {
-  const { data, getData } = useData();
+  const { data, getData } = useData(1);
 
   const { movieId } = useParams();
   useEffect(() => {
@@ -15,10 +16,11 @@ const Cast = () => {
       controller.abort();
     };
   }, [getData, movieId]);
-
+  console.log(data);
   return (
     <>
-      {data && (
+      {data?.cast === 0 && <NoInformation />}
+      {data?.cast.length > 0 && (
         <SectionStyled>
           <ul className="list">
             {data.cast.map(actor => {
@@ -34,7 +36,7 @@ const Cast = () => {
                     height={350}
                   />
                   <h3>{actor.name}</h3>
-                  <h2>{`Charecter: ${actor.character}`}</h2>
+                  <h2>{`Character: ${actor.character}`}</h2>
                 </li>
               );
             })}

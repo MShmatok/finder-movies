@@ -29,7 +29,11 @@ const MoviesDetails = () => {
           <Link to={location.current.state?.from ?? '/'}>Go Back</Link>
           <SectionStyled>
             <img
-              src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+              src={
+                data?.poster_path
+                  ? `https://image.tmdb.org/t/p/original/${data.poster_path}`
+                  : 'https://nemsmbr.org/wp-content/uploads/2019/11/no-image-icon-md-1.png'
+              }
               alt=""
               height={500}
             />

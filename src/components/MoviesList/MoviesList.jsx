@@ -3,12 +3,13 @@ import React from 'react';
 
 const MoviesList = ({ movies = [] }) => {
   return (
-    <ul>
-      {movies &&
-        movies.map(movie => {
+    <>
+      <ul>
+        {movies?.map(movie => {
           return <MovieItem key={movie.id} data={movie} />;
         })}
-    </ul>
+      </ul>
+    </>
   );
 };
 
